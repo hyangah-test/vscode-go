@@ -64,6 +64,14 @@ jobs:
         env:
           GO111MODULE: off
       
+      - name: Test
+        run: |
+          echo "Test Secret: $TEST_SECRET"
+          echo "Github Token: $GITHUB_TOKEN"
+        env:
+          TEST_SECRET: ${{ secrets.TEST_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Run unit tests
         run: npm run unit-test
         continue-on-error: true
